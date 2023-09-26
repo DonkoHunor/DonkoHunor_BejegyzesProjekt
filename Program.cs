@@ -105,6 +105,28 @@ namespace DonkoHunor_BejegyzesProjekt
             }
         }
 
+        static void KevesebbLike(int like)
+        {
+            bool van = false;
+
+            foreach (var item in list)
+            {
+                if (item.Likeok < like)
+                {
+                    van = true;
+                }
+            }
+
+            if (van)
+            {
+                Console.WriteLine($"Van olyan bejegyzés ami {like}-nél/nál kevesebb likot kapott.");
+            }
+            else
+            {
+                Console.WriteLine($"Nincs olyan bejegyzés ami {like}-nél/nál kevesebb likot kapott.");
+            }
+        }
+
         static void Main(string[] args)
         {  
             list.Add(new Bejegyzes("Szun-ce","Dying is gay."));
@@ -130,6 +152,9 @@ namespace DonkoHunor_BejegyzesProjekt
 
             Console.WriteLine();
             TobbLike(35);
+
+            Console.WriteLine();
+            KevesebbLike(15);
 
             Console.ReadKey();
         }
