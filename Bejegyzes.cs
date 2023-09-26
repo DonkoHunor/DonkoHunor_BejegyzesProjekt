@@ -44,5 +44,17 @@ namespace DonkoHunor_BejegyzesProjekt
         {
             this.likeok++;
         }
+
+        public override string ToString()
+        {
+            if (this.letrejott == this.szerkesztve)
+            {
+                return $"{this.szerzo} - {this.likeok} - {this.letrejott}\n{this.tartalom}";
+            }
+            else 
+            {
+                return $"{this.szerzo} - {this.likeok} - {this.letrejott}\nSzerkesztve: {this.szerkesztve}\n{this.tartalom}";
+            }
+        }
     }
 }
