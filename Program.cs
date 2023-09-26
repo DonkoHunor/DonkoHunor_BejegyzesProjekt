@@ -11,6 +11,8 @@ namespace DonkoHunor_BejegyzesProjekt
     {
         static List<Bejegyzes> list = new List<Bejegyzes>();
         
+        static Random rnd = new Random();
+
         static void Bekeres()
         {
             Console.Write("Adjon meg egy darabszámot! : ");
@@ -47,6 +49,14 @@ namespace DonkoHunor_BejegyzesProjekt
             }
         }
 
+        static void RandomLike()
+        {
+            for (int i = 0; i < list.Count*20; i++)
+            {
+                list[rnd.Next(0,list.Count)].Like();
+            }
+        }
+
         static void Main(string[] args)
         {            
             list.Add(new Bejegyzes("Balázs Dániel","Az én túróm is szaftos."));
@@ -54,6 +64,7 @@ namespace DonkoHunor_BejegyzesProjekt
             
             Bekeres();
             Beolvas();
+            RandomLike();
 
             Console.ReadKey();
         }
