@@ -48,6 +48,7 @@ namespace DonkoHunor_BejegyzesProjekt
                 string[] db = sr.ReadLine().Split(';');
                 list.Add(new Bejegyzes(db[0], db[1]));
             }
+            sr.Close();
         }
 
         static void RandomLike()
@@ -65,21 +66,46 @@ namespace DonkoHunor_BejegyzesProjekt
             list[1].Tartalom = szoveg;
         }
 
+        static void Legnepszerubb()
+        {
+            int index = -1;
+            int max = int.MinValue;
+
+            for (int i = 0;i < list.Count;i++)
+            {
+                if (list[i].Likeok > max)
+                {
+                    max = list[i].Likeok;
+                    index = i;
+                }
+            }
+
+            Console.WriteLine($"A legnépszerűbb bekegyzés: {list[index].ToString()}\nLikeok száma: {max}");
+        }
+
         static void Main(string[] args)
         {  
             list.Add(new Bejegyzes("Szun-ce","Dying is gay."));
             list.Add(new Bejegyzes("Balázs Dániel","Az én túróm is szaftos."));
                         
             Bekeres();
+
             Beolvas();
+
             RandomLike();
+
             SzovegModositas();
+
             Console.WriteLine();
             foreach (var item in list)
             {
                 Console.WriteLine(item.ToString());
                 Console.WriteLine();
             }
+            Console.WriteLine();
+
+            Legnepszerubb();
+
             Console.ReadKey();
         }
     }
