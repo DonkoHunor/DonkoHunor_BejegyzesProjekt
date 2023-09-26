@@ -10,6 +10,9 @@ namespace DonkoHunor_BejegyzesProjekt
     {
         static void Main(string[] args)
         {
+            List<Bejegyzes> list = new List<Bejegyzes>();
+            list.Add(new Bejegyzes("Balázs Dániel","Az én túróm is szaftos."));
+            list.Add(new Bejegyzes("Szun-ce","Dying is gay."));
             Console.ReadKey();
         }
     }
