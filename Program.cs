@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace DonkoHunor_BejegyzesProjekt
 {
@@ -36,13 +37,24 @@ namespace DonkoHunor_BejegyzesProjekt
             }
         }
 
+        static void Beolvas()
+        {
+            StreamReader sr = new StreamReader("bejegyzesek.csv");
+            while (!sr.EndOfStream)
+            {
+                string[] db = sr.ReadLine().Split(';');
+                list.Add(new Bejegyzes(db[0], db[1]));
+            }
+        }
+
         static void Main(string[] args)
         {            
             list.Add(new Bejegyzes("Balázs Dániel","Az én túróm is szaftos."));
             list.Add(new Bejegyzes("Szun-ce","Dying is gay."));
             
             Bekeres();
-            
+            Beolvas();
+
             Console.ReadKey();
         }
     }
