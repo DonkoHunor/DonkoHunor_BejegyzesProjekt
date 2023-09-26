@@ -127,6 +127,16 @@ namespace DonkoHunor_BejegyzesProjekt
             }
         }
 
+        static void Kiiras()
+        {
+            StreamWriter sw = new StreamWriter("bejegyzesek_rendezett.txt");
+            foreach (var item in list)
+            {
+                sw.WriteLine(item.ToString()+"\n");
+            }
+            sw.Close();
+        }
+
         static void Main(string[] args)
         {  
             list.Add(new Bejegyzes("Szun-ce","Dying is gay."));
@@ -155,6 +165,16 @@ namespace DonkoHunor_BejegyzesProjekt
 
             Console.WriteLine();
             KevesebbLike(15);
+
+            list = list.OrderByDescending(x => x.Likeok).ToList();
+            Console.WriteLine();
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.ToString());
+                Console.WriteLine();
+            }
+
+            Kiiras();
 
             Console.ReadKey();
         }
