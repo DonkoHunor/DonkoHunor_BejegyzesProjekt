@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace DonkoHunor_BejegyzesProjekt
 {
@@ -57,15 +58,28 @@ namespace DonkoHunor_BejegyzesProjekt
             }
         }
 
+        static void SzovegModositas()
+        {
+            Console.Write("Adjon meg egy szöveget! : ");
+            string szoveg = Console.ReadLine();
+            list[1].Tartalom = szoveg;
+        }
+
         static void Main(string[] args)
-        {            
-            list.Add(new Bejegyzes("Balázs Dániel","Az én túróm is szaftos."));
+        {  
             list.Add(new Bejegyzes("Szun-ce","Dying is gay."));
-            
+            list.Add(new Bejegyzes("Balázs Dániel","Az én túróm is szaftos."));
+                        
             Bekeres();
             Beolvas();
             RandomLike();
-
+            SzovegModositas();
+            Console.WriteLine();
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.ToString());
+                Console.WriteLine();
+            }
             Console.ReadKey();
         }
     }
